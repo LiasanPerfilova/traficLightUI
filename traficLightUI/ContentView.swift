@@ -13,7 +13,6 @@ struct ContentView: View {
        }
     @State private var currentLightState: TrafficLightState = .red
     
-    var counter = 0
     var body: some View {
         VStack {
             VStack {
