@@ -8,15 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum TrafficLightState {
+           case red, yellow, green
+       }
+    @State private var currentLightState: TrafficLightState = .red
+    
+    var counter = 0
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            VStack {
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(currentLightState == .red ? .red : .gray)
+                
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(currentLightState == .green ? .green : .gray)
+                
+                
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(currentLightState == .yellow ? .yellow : .gray)
+              
+               
+            }
+            Spacer()
+            
+            Button("Start") {
+                switch currentLightState {
+                    
+                case .red:
+                    currentLightState = .green
+                case .green:
+                    currentLightState = .yellow
+                case .yellow:
+                    currentLightState = .red
+                    
+                    
+                }
+            }
+            
+          
         }
-        .padding()
+      
     }
+   
 }
 
 struct ContentView_Previews: PreviewProvider {
